@@ -1,0 +1,80 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lighting System Control</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="header">
+		<img src="logo_white.png" alt="Logo" id="main-logo">
+				<img src="data:image/svg+xml;utf8,<svg width='80' height='40' viewBox='0 0 80 40' xmlns='http://www.w3.org/2000/svg'><rect width='80' height='40' rx='12' fill='%23b0bec5'/><text x='50%' y='50%' text-anchor='middle' dominant-baseline='central' font-family='Brush Script MT, cursive' font-size='28' fill='%233a465a'>TCL</text></svg>" alt="TCL Logo" class="header-logo">
+				<h1>Lighting & Sensor Monitoring</h1>
+	</div>
+	<div id="TimeLog">
+		<span id="CT"></span>
+		<span id="RTC"></span>
+		<button class="sync-time-btn" onclick="syncRTCTime()">Sync Time</button>
+	</div>
+	<div class="container flex-row">
+		
+		<div class="main-content">
+			
+			<div class="lights">
+				<div class="light-control" id="light1">
+					<div class="light-info">
+						<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI4IiByeD0iNiIgcnk9IjYiIGZpbGw9IiNmZmRiNzAiLz48cmVjdCB4PSIxMCIgeT0iMTQiIHdpZHRoPSI0IiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZmZkYjcwIi8+PHJlY3QgeD0iOSIgeT0iMjAiIHdpZHRoPSI2IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjY2NjIi8+PC9zdmc+" alt="Light Bulb" class="bulb-img" id="bulb1" data-state="unknown">
+						<h2>Light 1</h2>
+					</div>
+					<span class="status off" id="status1">OFF</span> 
+					<div id="T1">
+						<input type="time" id="toggleTime1" class="toggle-time-input">
+						<button class="toggle-time-btn" onclick="setToggleTime(1)">Set</button>
+					</div>
+					<input type="range" min="0" max="1" value="0" class="light-slider" id="slider1" onchange="sliderChange(1)">
+				</div>
+				<div class="light-control" id="light2">
+					<div class="light-info">
+						<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI4IiByeD0iNiIgcnk9IjYiIGZpbGw9IiNmZmRiNzAiLz48cmVjdCB4PSIxMCIgeT0iMTQiIHdpZHRoPSI0IiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZmZkYjcwIi8+PHJlY3QgeD0iOSIgeT0iMjAiIHdpZHRoPSI2IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjY2NjIi8+PC9zdmc+" alt="Light Bulb" class="bulb-img" id="bulb2" data-state="unknown">
+						<h2>Light 2</h2>
+					</div>
+					<span class="status off" id="status2">OFF</span>
+					<div id="T2">
+						<input type="time" id="toggleTime2" class="toggle-time-input">
+						<button class="toggle-time-btn" onclick="setToggleTime(2)">Set</button>
+					</div>
+					<input type="range" min="0" max="1" value="0" class="light-slider" id="slider2" onchange="sliderChange(2)">
+				</div>
+				<div class="light-control" id="light3">
+					<div class="light-info">
+						<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZWxsaXBzZSBjeD0iMTIiIGN5PSI4IiByeD0iNiIgcnk9IjYiIGZpbGw9IiNmZmRiNzAiLz48cmVjdCB4PSIxMCIgeT0iMTQiIHdpZHRoPSI0IiBoZWlnaHQ9IjYiIHJ4PSIyIiBmaWxsPSIjZmZkYjcwIi8+PHJlY3QgeD0iOSIgeT0iMjAiIHdpZHRoPSI2IiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSIjY2NjIi8+PC9zdmc+" alt="Light Bulb" class="bulb-img" id="bulb3" data-state="unknown">
+						<h2>Light 3</h2>
+					</div>
+					<span class="status off" id="status3">OFF</span>
+					<div id="T3">
+						<input type="time" id="toggleTime3" class="toggle-time-input">
+						<button class="toggle-time-btn" onclick="setToggleTime(3)">Set</button>
+					</div>
+					<input type="range" min="0" max="1" value="0" class="light-slider" id="slider3" onchange="sliderChange(3)">
+				</div>
+			</div>
+		</div>
+		<div class="sensor-panel">
+			<div class="sensors">
+				<div class="sensor-card">
+					<h2>Ultrasonic Sensor</h2>
+					<div class="sensor-value" id="ultrasonic-value">-- cm</div>
+				</div>
+				<div class="sensor-card">
+					<h2>PIR Sensor</h2>
+					<div class="sensor-value" id="pir-value">--</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
